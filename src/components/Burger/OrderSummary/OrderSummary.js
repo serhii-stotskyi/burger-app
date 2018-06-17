@@ -1,7 +1,9 @@
 import React from 'react';
 import Auxed from '../../../hoc/Auxed'
+import Button from '../../UI/Button/Button'
 
 const orderSummary = (props) => {
+    console.log(props);
     const ingredientSummary = Object.keys(props.ingredients)
         .map(igKey => {
             return (
@@ -16,7 +18,10 @@ const orderSummary = (props) => {
             <ul>
                 {ingredientSummary}
             </ul>
+            <p><strong>Total price: {props.price.toFixed(2)}$</strong></p>
             <p>Continue to checkout?</p>
+            <Button btnType="Danger" clicked={props.purchaseCanceled}>CANCEL</Button>
+            <Button btnType="Success" clicked={props.purchaseContinue}>CONTINUE</Button>
         </Auxed>
     )
 
